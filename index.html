@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Untuk Widi Rahmadania</title>
+  <style>
+    :root{
+      --pink:#ff6fab;
+      --pink-2:#ff9fca;
+      --pink-3:#ffd0e6;
+      --ink:#5b214b;
+      --bg:#fff3f8;
+      --shadow:0 10px 30px rgba(255,110,171,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #ffe3f1, transparent 60%),
+        radial-gradient(1000px 600px at 90% -20%, #ffeaf5, transparent 60%),
+        linear-gradient(180deg, var(--bg), #fff);
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      padding: clamp(18px, 4vw, 36px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card{
+      position:relative;
+      width:min(900px, 100%);
+      background: #fff;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 6vw, 48px);
+      border: 1px solid #ffe0f0;
+      z-index: 1;
+    }
+
+    .title{
+      font-size: clamp(28px, 6vw, 60px);
+      line-height: 1.07;
+      text-align:center;
+      margin: 0 0 .4em 0;
+      letter-spacing:.3px;
+      position:relative;
+    }
+    .title .name{color: var(--pink); text-shadow:0 6px 20px rgba(255,110,171,.25)}
+
+    .subtitle{
+      text-align:center;
+      font-size: clamp(14px, 2.6vw, 20px);
+      margin: 0 0 18px 0;
+      opacity:.9;
+    }
+
+    .message{
+      font-size: clamp(16px, 2.8vw, 22px);
+      line-height:1.6;
+      text-align:center;
+      margin: 0 auto;
+      max-width: 60ch;
+    }
+
+    .cta{
+      display:flex; gap:12px; justify-content:center; align-items:center; margin-top: 26px; flex-wrap:wrap;
+    }
+
+    .btn{
+      appearance:none; border:0; cursor:pointer;
+      padding: 14px 20px; border-radius: 16px; font-weight:700; font-size: 16px;
+      background: linear-gradient(135deg, var(--pink), var(--pink-2));
+      color:white; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 16px 34px rgba(255,110,171,.45) }
+    .btn:active{ transform: translateY(0) scale(.98) }
+
+    .ghost{
+      background: transparent; color: var(--ink); border: 2px solid var(--pink-2);
+    }
+
+    .ocean-layer{
+      position:absolute; inset:0; pointer-events:none; z-index: 2;
+      overflow:visible;
+    }
+    .orca{
+      position:absolute; left:-25vw; top:50%; width: clamp(120px, 14vw, 240px);
+      transform: translateY(-50%) rotateY(180deg);
+      filter: drop-shadow(0 14px 18px rgba(0,0,0,.18));
+      animation: swim 16s linear infinite;
+    }
+
+    @keyframes swim{
+      0%   { transform: translate(-30vw, -40%) rotateY(180deg) rotateZ(-2deg); }
+      45%  { transform: translate(110vw, -33%) rotateY(180deg) rotateZ(2deg); }
+      50%  { transform: translate(110vw, -33%) rotateY(0deg)   rotateZ(2deg); }
+      95%  { transform: translate(-30vw, -52%) rotateY(0deg)   rotateZ(-3deg); }
+      100% { transform: translate(-30vw, -40%) rotateY(180deg) rotateZ(-2deg); }
+    }
+
+    .hearts{position:absolute; inset:0; overflow:hidden; z-index:0;}
+    .heart{ position:absolute; width:16px; height:16px; transform: rotate(45deg); background: var(--pink-2); opacity:.28; border-radius: 2px; animation: floatUp linear forwards; }
+    .heart:before, .heart:after{ content:""; position:absolute; width:16px; height:16px; background: inherit; border-radius:50%; }
+    .heart:before{ left:-8px; }
+    .heart:after{ top:-8px; }
+    @keyframes floatUp{ to { transform: translateY(-110vh) rotate(45deg); opacity:0 } }
+
+    .modal{ position:fixed; inset:0; display:none; place-items:center; background: rgba(255, 164, 210, .18); backdrop-filter: blur(2px); z-index: 3 }
+    .modal.show{ display:grid }
+    .modal .box{ background:#fff; border-radius:22px; padding:28px; width:min(560px, 92vw); box-shadow: var(--shadow); border:1px solid #ffe0f0; text-align:center }
+    .modal .box h3{ margin:0 0 10px 0; font-size: clamp(20px, 4vw, 30px); }
+
+    @media (max-width: 420px){ .btn{ width:100% } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hearts" id="hearts"></div>
+
+    <div class="card">
+      <h1 class="title">
+        Hai <span class="name">Widi Rahmadania</span> 💖
+      </h1>
+      <p class="subtitle">Ada satu hal yang sudah lama ingin aku ucapkan…</p>
+      <p class="message">
+        Setiap hari kamu selalu terlintas di pikiranku. Kamu baik, lucu, dan bikin segala hal terasa lebih indah—seperti langit senja warna pink. Jadi…
+        <br><strong>maukah kamu jadi pacarku?</strong>
+      </p>
+      <div class="cta">
+        <button class="btn" id="btnKirim" aria-label="Kirim pengakuan">Kirim untuk Widi</button>
+        <button class="btn ghost" id="btnSalin" aria-label="Salin teks">Salin Pesan</button>
+      </div>
+    </div>
+
+    <div class="ocean-layer" aria-hidden="true">
+      <svg class="orca" viewBox="0 0 300 160">
+        <path d="M38 90 C10 75, 10 40, 46 36 C50 60, 58 82, 38 90 Z" fill="#0b0b0e"/>
+        <ellipse cx="140" cy="80" rx="120" ry="54" fill="#0b0b0e"/>
+        <path d="M60 88 C110 130, 210 128, 240 90 C200 80, 140 92, 60 88 Z" fill="#ffffff"/>
+        <path d="M92 50 C120 30, 170 28, 210 44 C180 46, 140 54, 110 58 C100 58, 95 55, 92 50 Z" fill="#ffffff"/>
+        <path d="M150 22 C138 4, 120 4, 120 40 C132 38, 142 34, 150 22 Z" fill="#0b0b0e"/>
+        <path d="M120 102 C110 120, 96 130, 106 138 C126 128, 136 110, 120 102 Z" fill="#0b0b0e"/>
+        <circle cx="200" cy="64" r="4" fill="#ffffff"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="box">
+      <h3>Pesanmu siap dikirim! 💌</h3>
+      <p id="preview">Hai Widi Rahmadania, aku suka sama kamu. Mau jadi pacarku? 💖</p>
+      <div class="cta" style="margin-top:14px">
+        <a id="waLink" class="btn" href="#" target="_blank" rel="noopener">Kirim via WhatsApp</a>
+        <button class="btn ghost" id="btnTutup">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const confessText = "Hai Widi Rahmadania, aku suka sama kamu. Mau jadi pacarku? 💖";
+
+    const btnKirim = document.getElementById('btnKirim');
+    const btnSalin = document.getElementById('btnSalin');
+    const hearts = document.getElementById('hearts');
+    const modal = document.getElementById('modal');
+    const preview = document.getElementById('preview');
+    const waLink = document.getElementById('waLink');
+    const btnTutup = document.getElementById('btnTutup');
+
+    function burstHearts(x, y){
+      for (let i=0; i<24; i++){
+        const h = document.createElement('div');
+        h.className = 'heart';
+        const size = 10 + Math.random()*18;
+        h.style.width = h.style.height = size + 'px';
+        h.style.left = (x + (Math.random()*120-60)) + 'px';
+        h.style.top = (y + (Math.random()*20-10)) + 'px';
+        h.style.animationDuration = (3 + Math.random()*3) + 's';
+        h.style.opacity = 0.25 + Math.random()*0.35;
+        hearts.appendChild(h);
+        setTimeout(()=>h.remove(), 6500);
+      }
+    }
+
+    btnKirim.addEventListener('click', (e)=>{
+      const rect = e.target.getBoundingClientRect();
+      burstHearts(rect.left + rect.width/2, rect.top + window.scrollY);
+      preview.textContent = confessText;
+      const encoded = encodeURIComponent(confessText);
+      waLink.href = `https://wa.me/?text=${encoded}`;
+      modal.classList.add('show');
+    });
+
+    btnSalin.addEventListener('click', async (e)=>{
+      try{
+        await navigator.clipboard.writeText(confessText);
+        e.target.textContent = 'Tersalin ✔';
+        burstHearts(e.clientX || (innerWidth/2), e.clientY || (innerHeight-40));
+        setTimeout(()=> e.target.textContent = 'Salin Pesan', 1800);
+      }catch(err){
+        alert('Gagal menyalin. Coba manual saja ya.');
+      }
+    });
+
+    btnTutup.addEventListener('click', ()=> modal.classList.remove('show'));
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('show'); });
+  </script>
+</body>
+</html>
